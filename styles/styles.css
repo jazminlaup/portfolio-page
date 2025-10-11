@@ -1,7 +1,7 @@
 /* Grundlegende Variablen */
 :root {
   /* Farben */
-  --bg: #f2f2f2;
+  --bg: #636c95;
   --card: #111522;
   --text: #000000;
   --muted: #9aa3b2;
@@ -31,8 +31,9 @@ body {
   font-family: var(--font-family);
   font-size: var(--font-size-lg);
   line-height: 1.4;
-  background-color: #636c95;
+  background-color: var(--bg);
   margin: var(--space-lg);
+  hyphens: auto;
 }
 
 /* Header und Navigation */
@@ -184,9 +185,19 @@ h3 {
 /* Button-Basis */
 .controls button,
 .badge,
+.contact-btn,
 .type-chip {
   border: 1px solid #26324a;
   background: #757b8b;
+  color: var(--text);
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+}
+
+.contact-btn {
+  border: 1px solid #26324a;
+  background: #9b9da3;
   color: var(--text);
   padding: var(--space-xs) var(--space-sm);
   border-radius: var(--radius-pill);
@@ -379,5 +390,28 @@ h3 {
   }
   .tl-item .dot {
     left: 4px;
+  }
+}
+
+/* Leaflet Karte */
+.map-container {
+  width: 80%;
+  max-width: 800px;
+  height: 400px;
+  margin: 20px auto;
+  border-radius: var(--radius);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.map-container .leaflet-control-attribution {
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 4px;
+}
+
+@media (max-width: 768px) {
+  .map-container {
+    width: 95%;
+    height: 300px;
   }
 }

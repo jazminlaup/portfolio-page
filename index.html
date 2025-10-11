@@ -28,18 +28,32 @@
     <main>
       <section id="about">
         <h1>About me</h1>
-        <script type="module" src="scripts/main.js" defer></script>
         <div class="about-content">
           <img src="assets/Bild.jpg" alt="Profilbild" class="profilbild" />
+
+          <span id="intro"></span>
+
+          <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+
+          <script src="scripts/typed.js" defer></script>
+
           <p>
-            Ich arbeite als Business Analystin in der Versicherungsbranche und
-            studiere berufsbegleitend Wirtschaftsinformatik an der Berner
-            Fachhochschule. Nach über zehn Jahren Erfahrung in der
-            Schadenabwicklung verbinde ich heute Fachwissen aus der Versicherung
+            Ich arbeite als Business Analystin und studiere berufsbegleitend
+            Wirtschaftsinformatik an der Berner Fachhochschule. Mit über zehn
+            Jahren Erfahrung in der Schadenabwicklung verbinde ich Fachwissen
             mit analytischem Denken und digitalem Verständnis. Mein Ziel ist es,
             komplexe Prozesse zu verstehen, zu hinterfragen und nachhaltig zu
             verbessern.
           </p>
+
+          <button
+            type="button"
+            class="contact-btn"
+            data-filter="Alle"
+            aria-pressed="true"
+          >
+            Kontakt
+          </button>
         </div>
       </section>
 
@@ -66,6 +80,19 @@
       <section id="hobbies">
         <h1>Hobbies</h1>
         <p>Kurzbeschreibung der Hobbies.</p>
+
+        <iframe
+          data-testid="embed-iframe"
+          style="border-radius: 12px"
+          src="https://open.spotify.com/embed/playlist/37i9dQZF1DX76Wlfdnj7AP?utm_source=generator"
+          width="80%"
+          height="352"
+          frameborder="0"
+          allowfullscreen=""
+          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+          loading="lazy"
+        ></iframe>
+
         <ul>
           <li>Lesen</li>
           <li>Reisen</li>
