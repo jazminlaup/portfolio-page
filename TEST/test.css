@@ -1,0 +1,18 @@
+body {
+  font-family: "Helvetica", sans-serif;
+  background-color: yellow;
+  color: blue;
+}
+nav {
+  background-color: lightgray;
+}
+nav ul {
+  margin: 0;
+  display: flex;
+  list-style: none;
+}
+nav a {
+  text-decoration: none;
+  color: black;
+  padding: 10px;
+}
