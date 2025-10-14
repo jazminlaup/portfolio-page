@@ -53,9 +53,6 @@ function render() {
 
   tlEl.innerHTML = visible
     .map((x, i) => {
-      const skills = (x.skills || [])
-        .map((s) => `<span class="badge">${escapeHtml(s)}</span>`)
-        .join("");
       const highlights = (x.highlights || [])
         .map((h) => `<li>${escapeHtml(h)}</li>`)
         .join("");
@@ -89,7 +86,6 @@ function render() {
         x.firma ? `· <span class="org">${escapeHtml(x.firma)}</span>` : ""
       }</h3>
               ${highlights ? `<ul class="highlights">${highlights}</ul>` : ""}
-              ${skills ? `<div class="badges">${skills}</div>` : ""}
               ${link}
             </article>
           </li>`;

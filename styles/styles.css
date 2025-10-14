@@ -1,11 +1,11 @@
 /* Grundlegende Variablen */
 :root {
   /* Farben */
-  --bg: #636c95;
-  --card: #111522;
+  --bg: #ded9c1;
+  --card: #ffffff;
   --text: #000000;
   --muted: #9aa3b2;
-  --accent: #4f8cff;
+  --accent: #5b9aa9;
   --line: #2a3244;
   --success: #22c55e;
   --edu: #f59e0b;
@@ -174,7 +174,6 @@ h3 {
   align-items: center;
   gap: var(--space-lg);
 }
-.badges,
 .meta {
   display: flex;
   flex-wrap: wrap;
@@ -184,10 +183,9 @@ h3 {
 
 /* Button-Basis */
 .controls button,
-.badge,
 .contact-btn,
 .type-chip {
-  border: 1px solid #26324a;
+  border: 1px solid #000000;
   background: #757b8b;
   color: var(--text);
   padding: var(--space-xs) var(--space-sm);
@@ -297,16 +295,6 @@ h3 {
   opacity: 0.9;
 }
 
-/* Badges und Highlights */
-.badges {
-  margin-top: var(--space-sm);
-}
-
-.badge {
-  font-size: 12px;
-  color: var(--muted);
-}
-
 .highlights {
   margin: var(--space-sm) 0 0;
   padding-left: 18px;
@@ -357,8 +345,8 @@ h3 {
 .more {
   margin-top: 16px;
   display: inline-block;
-  border: 1px solid #2a3450;
-  background: #10182b;
+  border: 1px solid #d0d6dd;
+  background: var(--card);
   color: var(--text);
   padding: 10px 14px;
   border-radius: 12px;

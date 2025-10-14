@@ -4,10 +4,6 @@ document.addEventListener("DOMContentLoaded", function () {
   const europeCenter = [54.5973, 25.2797];
   const zoomLevel = 4;
 
-  //Schwiez
-
-  const homecountry = "Switzerland";
-
   // Länder die du besucht hast
   const visitedCountries = [
     "Germany",

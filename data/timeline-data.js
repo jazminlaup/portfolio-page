@@ -5,12 +5,7 @@ export const TIMELINE_DATA = [
     titel: "Business Analystin",
     firma: "Die Mobiliar, Bern",
     typ: "Beruf",
-    highlights: [
-      "Fachverantworltiche Controllingwert",
-      "blablablabla",
-      "blablablabla",
-    ],
-    skills: ["SQL", "Power BI", "Requirements"],
+    highlights: ["Fachverantworltiche Controllingwert", "blablablabla"],
   },
   {
     start: "2023-03",
@@ -19,7 +14,6 @@ export const TIMELINE_DATA = [
     firma: "Die Mobiliar, Generalagentur Belp",
     typ: "Beruf",
     highlights: ["blablabla", "blablabla"],
-    skills: ["Schaden", "Prozess", "Kundenkommunikation"],
   },
   {
     start: "2020-09",
@@ -28,7 +22,6 @@ export const TIMELINE_DATA = [
     firma: "Vaudoise, Bern",
     typ: "Beruf",
     highlights: ["blablabla", "blablabla"],
-    skills: ["Schaden", "Prozess", "Kundenkommunikation"],
   },
   {
     start: "2016-05",
@@ -37,7 +30,6 @@ export const TIMELINE_DATA = [
     firma: "Die Mobiliar, Bern",
     typ: "Beruf",
     highlights: ["blablabla", "blablabla"],
-    skills: ["Schaden", "Prozess", "Kundenkommunikation"],
   },
   {
     start: "2014-09",
@@ -46,7 +38,6 @@ export const TIMELINE_DATA = [
     firma: "Die Mobiliar, Generalagentur Freiburg",
     typ: "Beruf",
     highlights: ["blablabla", "blablabla"],
-    skills: ["Schaden", "Prozess", "Kundenkommunikation"],
   },
   {
     start: "2022-09",
@@ -58,7 +49,6 @@ export const TIMELINE_DATA = [
       "Datenbanken, Software Engineering, BI",
       "Teamprojekt: Claims Analytics PoC",
     ],
-    skills: ["SQL", "Data Modeling", "Python"],
   },
   {
     start: "2018-09",
@@ -67,7 +57,6 @@ export const TIMELINE_DATA = [
     firma: "AKAD Bildung AG",
     typ: "Bildung",
     highlights: ["Versicherungswirtschaft, blablabla ", "blablabla"],
-    skills: ["SQL", "Data Modeling", "Python"],
   },
   {
     start: "2016-04",
@@ -76,7 +65,6 @@ export const TIMELINE_DATA = [
     firma: "VBV Schweizerischer Versicherungsverband, Bern",
     typ: "Bildung",
     highlights: ["Versicherungswirtschaft, blablabla ", "blablabla"],
-    skills: ["SQL", "Data Modeling", "Python"],
   },
   {
     start: "2011-08",
@@ -85,6 +73,5 @@ export const TIMELINE_DATA = [
     firma: "Wirtschafts- und Kaderschule, Bern",
     typ: "Bildung",
     highlights: ["blablabla, blablabla ", "blablabla"],
-    skills: ["SQL", "Data Modeling", "Python"],
   },
 ];
