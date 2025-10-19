@@ -164,8 +164,9 @@ h3 {
 
 /* Profilbild-Styling */
 .profilbild {
-  height: 150px;
-  width: 400px;
+  height: auto;
+  width: 100%;
+  max-width: 400px;
   border-radius: 70% 30% 30% 70% / 60% 40% 60% 40%;
 }
 
