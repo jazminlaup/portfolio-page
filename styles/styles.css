@@ -1,6 +1,7 @@
 /* Grundlegende Variablen */
 :root {
   /* Farben */
+  --bg-header: #ffffff;
   --bg: #ded9c1;
   --card: #ffffff;
   --text: #000000;
@@ -32,15 +33,19 @@ body {
   font-size: var(--font-size-lg);
   line-height: 1.4;
   background-color: var(--bg);
-  margin: var(--space-lg);
+  margin: 0;
   hyphens: auto;
+}
+
+main {
+  padding: var(--space-lg);
 }
 
 /* Header und Navigation */
 header {
   width: 100%;
   margin-bottom: var(--space-sm);
-  background-color: lightgray;
+  background-color: var(--bg-header);
   padding: 10px 20px;
   box-sizing: border-box;
 }
