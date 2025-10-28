@@ -395,8 +395,7 @@ h3 {
   }
 }
 
-/* Leaflet Karte */
-.map-container {
+.travel-map-container {
   width: 80%;
   max-width: 800px;
   height: 400px;
@@ -404,15 +403,44 @@ h3 {
   border-radius: var(--radius);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   overflow: hidden;
+  border: 4px solid #000;
+  background: #fff;
 }
 
-.map-container .leaflet-control-attribution {
+.travel-map {
+  width: 100%;
+  height: 100%;
+}
+
+.travel-map-container .leaflet-control-attribution {
   background-color: rgba(255, 255, 255, 0.8);
   border-radius: 4px;
 }
 
+.travel-map-container .legend {
+  background: #fff;
+  padding: 8px 10px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+  font-size: 14px;
+}
+
+.travel-map-container .legend .row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 4px 0;
+}
+
+.travel-map-container .legend .swatch {
+  width: 14px;
+  height: 14px;
+  border-radius: 3px;
+  display: inline-block;
+}
+
 @media (max-width: 768px) {
-  .map-container {
+  .travel-map-container {
     width: 95%;
     height: 300px;
   }

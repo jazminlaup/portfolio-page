@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Jasmin Lauper</title>
     <link rel="stylesheet" href="styles/styles.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <link rel="icon" type="image/x-icon" href="/assets/favicon.ico" />
     <script src="scripts/nav.js" defer></script>
   </head>
@@ -81,7 +82,12 @@
 
         <ul>
           <li>Lesen</li>
-          <li>Reisen</li>
+          <li>
+            Reisen
+            <div class="travel-map-container" aria-live="polite">
+              <div id="travel-map" class="travel-map" role="img"></div>
+            </div>
+          </li>
           <li>Fotografie</li>
         </ul>
       </section>
@@ -102,5 +108,9 @@
         </form>
       </section>
     </main>
+
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="scripts/map_configuration.js"></script>
+    <script src="scripts/render_map.js"></script>
   </body>
 </html>
