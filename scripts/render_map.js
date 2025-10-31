@@ -10,6 +10,143 @@ const COLORS = {
   none: "#e5e7eb", // gray
 };
 
+const highlightableStatuses = new Set(["home", "visited"]);
+const galleryGrid = document.getElementById("travel-gallery-grid");
+const galleryCards = [];
+const regionFormatter =
+  typeof Intl !== "undefined" && typeof Intl.DisplayNames === "function"
+    ? new Intl.DisplayNames(["de-CH", "de", "en"], { type: "region" })
+    : null;
+
+function labelForCountry(code) {
+  if (!code) return "Unbekannt";
+  try {
+    return regionFormatter ? regionFormatter.of(code) : code;
+  } catch (error) {
+    return code;
+  }
+}
+
+function buildPhotoCard(countryCode, photo) {
+  const card = document.createElement("button");
+  card.type = "button";
+  card.className = "photo-card";
+  card.dataset.country = countryCode;
+  card.setAttribute("role", "listitem");
+  card.setAttribute("aria-pressed", "false");
+  const photoTitle = photo.title || labelForCountry(countryCode);
+  const photoDescription = photo.description || "";
+  card.title = photoDescription
+    ? `${photoTitle} \u2013 ${photoDescription}`
+    : photoTitle;
+
+  const figure = document.createElement("figure");
+  const img = document.createElement("img");
+  img.src = photo.src;
+  img.alt = photo.alt;
+  figure.appendChild(img);
+
+  const caption = document.createElement("figcaption");
+
+  const meta = document.createElement("p");
+  meta.className = "photo-meta";
+  meta.textContent = labelForCountry(countryCode);
+
+  const title = document.createElement("p");
+  title.className = "photo-title";
+  title.textContent = photoTitle;
+  caption.append(meta, title);
+
+  if (photoDescription) {
+    const description = document.createElement("p");
+    description.className = "photo-description";
+    description.textContent = photoDescription;
+    caption.appendChild(description);
+  }
+
+  figure.appendChild(caption);
+  card.appendChild(figure);
+
+  card.addEventListener("click", () =>
+    highlightPhotos(countryCode, { scrollIntoView: false })
+  );
+
+  return card;
+}
+
+function renderPhotoGallery() {
+  if (
+    !galleryGrid ||
+    typeof COUNTRY_PHOTOS === "undefined" ||
+    typeof STATUS === "undefined"
+  ) {
+    return;
+  }
+
+  galleryGrid.innerHTML = "";
+  galleryCards.length = 0;
+
+  const entries = Object.entries(COUNTRY_PHOTOS).filter(([code]) =>
+    highlightableStatuses.has(STATUS[code])
+  );
+
+  if (!entries.length) {
+    const message = document.createElement("p");
+    message.className = "photo-empty";
+    message.textContent = "Noch keine Reisebilder hinterlegt.";
+    galleryGrid.appendChild(message);
+    return;
+  }
+
+  const fragment = document.createDocumentFragment();
+
+  entries.forEach(([countryCode, photos]) => {
+    photos.forEach((photo) => {
+      const card = buildPhotoCard(countryCode, photo);
+      fragment.appendChild(card);
+      galleryCards.push(card);
+    });
+  });
+
+  galleryGrid.appendChild(fragment);
+}
+
+function highlightPhotos(countryCode, options = {}) {
+  if (!galleryCards.length) return;
+
+  if (!countryCode) {
+    galleryCards.forEach((card) => {
+      card.classList.remove("is-active");
+      card.setAttribute("aria-pressed", "false");
+    });
+    return;
+  }
+
+  const matches = galleryCards.filter(
+    (card) => card.dataset.country === countryCode
+  );
+
+  if (!matches.length) {
+    galleryCards.forEach((card) => {
+      card.classList.remove("is-active");
+      card.setAttribute("aria-pressed", "false");
+    });
+    return;
+  }
+
+  galleryCards.forEach((card) => {
+    const isMatch = card.dataset.country === countryCode;
+    card.classList.toggle("is-active", isMatch);
+    card.setAttribute("aria-pressed", isMatch ? "true" : "false");
+  });
+
+  if (options.scrollIntoView !== false && matches[0]) {
+    matches[0].scrollIntoView({ behavior: "smooth", block: "center" });
+  }
+}
+
+renderPhotoGallery();
+
 // --- 3) Map base ---
 const mapContainer = document.getElementById("travel-map");
 
@@ -45,11 +182,13 @@ if (!mapContainer) {
 
   function perFeature(feature, layer) {
     const name = feature.properties?.NAME || "Unknown";
+    const code = feature.properties?.ISO2;
     layer.bindTooltip(name, { sticky: true });
 
     // Subtle hover emphasis (no status changes)
     layer.on("mouseover", () => layer.setStyle({ weight: 2 }));
     layer.on("mouseout", () => layer.setStyle({ weight: 1 }));
+    layer.on("click", () => highlightPhotos(code));
   }
 
   fetch("./data/europe-geo.json")

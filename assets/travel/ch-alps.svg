@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="400" viewBox="0 0 600 400">
+  <defs>
+    <linearGradient id="grad-ch-alps" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#e0f2fe" />
+      <stop offset="100%" stop-color="#0ea5e9" />
+    </linearGradient>
+  </defs>
+  <rect width="600" height="400" fill="url(#grad-ch-alps)" />
+  <path d="M0 260 L120 180 L200 260 L280 190 L360 260 L440 180 L520 260 L600 200 V400 H0 Z" fill="#ffffff" opacity="0.7" />
+  <path d="M0 320 L130 220 L260 330 L390 210 L520 330 L600 260 V400 H0 Z" fill="#ffffff" opacity="0.4" />
+  <text x="40" y="360" fill="#0369a1" font-family="Arial" font-size="34" font-weight="bold">Swiss Alps</text>
+</svg>
