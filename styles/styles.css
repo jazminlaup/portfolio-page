@@ -35,10 +35,45 @@ body {
   background-color: var(--bg);
   margin: 0;
   hyphens: auto;
+  overflow-x: hidden;
+}
+
+body.menu-open {
+  overflow: hidden;
+}
+
+img,
+picture,
+video {
+  max-width: 100%;
+  height: auto;
+}
+
+iframe {
+  max-width: 100%;
+  width: 100%;
+  display: block;
+  border: 0;
+  margin: 0 auto;
 }
 
 main {
   padding: var(--space-lg);
+  max-width: 1200px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+  main {
+    padding: var(--space-md);
+  }
+}
+
+section {
+  width: 100%;
+  margin: 0 auto var(--space-lg);
+  box-sizing: border-box;
 }
 
 /* Header und Navigation */
@@ -54,6 +89,8 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
 }
 
 .brand {
@@ -88,6 +125,8 @@ nav ul {
   list-style: none;
   gap: var(--space-sm);
   align-items: center;
+  flex-wrap: wrap;
+  justify-content: flex-end;
 }
 
 nav a {
@@ -104,10 +143,6 @@ nav a.aktuell {
 }
 
 /* Erstes Listenelement nach links (z.B. Logo) */
-nav ul li:first-child {
-  margin-right: auto;
-}
-
 /* Auf kleinen Bildschirmen: Hamburger-Menü */
 @media (max-width: 600px) {
   nav {
@@ -123,19 +158,19 @@ nav ul li:first-child {
   .nav-menu {
     position: fixed;
     top: 0;
-    right: -100%;
-    width: 250px;
+    right: 0;
+    width: min(80vw, 320px);
     height: 100vh;
     background-color: lightgray;
     flex-direction: column;
     justify-content: flex-start;
-    padding-top: 60px;
-    transition: 0.3s ease;
+    padding: 80px var(--space-md) var(--space-md);
+    transition: transform 0.3s ease;
     box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+    transform: translateX(100%);
   }
-
   .nav-menu.active {
-    right: 0;
+    transform: translateX(0);
   }
 
   nav ul li {
@@ -162,7 +197,7 @@ h1,
 h2,
 h3 {
   font-family: var(--font-family);
-  font-size: var(--font-size-xl);
+  font-size: clamp(1.75rem, 4vw, var(--font-size-xl));
   color: rgb(25, 0, 139);
   text-align: center;
 }
@@ -173,6 +208,7 @@ h3 {
   width: 100%;
   max-width: 400px;
   border-radius: 70% 30% 30% 70% / 60% 40% 60% 40%;
+  flex: 0 1 320px;
 }
 
 #about {
@@ -187,12 +223,68 @@ h3 {
   display: flex;
   align-items: center;
   gap: var(--space-lg);
+  flex-wrap: wrap;
+  justify-content: center;
+  text-align: left;
 }
+
+.intro-text {
+  flex: 1 1 300px;
+  display: flex;
+  align-items: center;
+  min-height: 0;
+}
+
+#intro {
+  font-size: clamp(1.125rem, 4vw, 1.75rem);
+  display: inline;
+}
+
+.intro-text .typed-cursor {
+  font-size: clamp(1.125rem, 4vw, 1.75rem);
+  margin-left: 4px;
+  line-height: 1;
+}
+
 .meta {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-sm);
   align-items: center;
+}
+
+@media (max-width: 768px) {
+  .about-content {
+    flex-direction: column;
+    gap: var(--space-md);
+    text-align: center;
+  }
+
+  .about-content .profilbild {
+    flex: 0 0 auto;
+    width: min(80vw, 360px);
+    max-width: 100%;
+  }
+  .intro-text {
+    justify-content: center;
+    text-align: center;
+    padding: var(--space-sm) 0;
+  }
+
+  #intro,
+  .intro-text .typed-cursor {
+    font-size: clamp(1.25rem, 5vw, 1.9rem);
+  }
+}
+
+#hobbies ul {
+  list-style: none;
+  padding: 0;
+  margin: var(--space-md) 0 0;
+}
+
+#hobbies li + li {
+  margin-top: var(--space-md);
 }
 
 /* Button-Basis */
@@ -229,6 +321,13 @@ h3 {
 
 .controls .spacer {
   flex: 1;
+}
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-sm);
 }
 
 /* Timeline Hauptkomponente */
@@ -396,9 +495,8 @@ h3 {
 }
 
 .travel-map-container {
-  width: 80%;
-  max-width: 800px;
-  height: 400px;
+  width: min(100%, 800px);
+  height: clamp(280px, 45vw, 400px);
   margin: 20px auto;
   border-radius: var(--radius);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -439,15 +537,8 @@ h3 {
   display: inline-block;
 }
 
-@media (max-width: 768px) {
-  .travel-map-container {
-    width: 95%;
-    height: 300px;
-  }
-}
-
 .travel-gallery {
-  width: 80%;
+  width: min(100%, 920px);
   max-width: 920px;
   margin: 20px auto 40px;
   background: var(--card);
@@ -490,8 +581,7 @@ h3 {
   overflow: hidden;
   border: 2px solid transparent;
   box-shadow: 0 6px 14px rgba(15, 23, 42, 0.08);
-  transition: transform 0.2s ease, border-color 0.2s ease,
-    box-shadow 0.2s ease;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
   cursor: pointer;
   font: inherit;
   text-align: left;
@@ -554,10 +644,48 @@ h3 {
 
 @media (max-width: 768px) {
   .travel-gallery {
-    width: 95%;
+    padding: var(--space-sm);
   }
-
   .photo-card img {
     height: 130px;
   }
+}
+
+@media (max-width: 600px) {
+  .travel-map-container,
+  .travel-gallery {
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    border-radius: calc(var(--radius) * 0.75);
+  }
+}
+
+form {
+  max-width: 520px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+form label {
+  font-weight: 600;
+  display: block;
+}
+
+form input,
+form textarea {
+  width: 100%;
+  padding: var(--space-sm);
+  border-radius: 8px;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  font: inherit;
+  box-sizing: border-box;
+  background-color: #fff;
+}
+
+form button {
+  align-self: flex-start;
+  margin-top: var(--space-sm);
 }

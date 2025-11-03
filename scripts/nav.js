@@ -2,16 +2,36 @@ document.addEventListener("DOMContentLoaded", () => {
   const hamburger = document.querySelector(".hamburger");
   const navMenu = document.querySelector(".nav-menu");
 
+  if (!hamburger || !navMenu) return;
+
+  const setMenuState = (isOpen) => {
+    hamburger.classList.toggle("active", isOpen);
+    navMenu.classList.toggle("active", isOpen);
+    hamburger.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    document.body.classList.toggle("menu-open", isOpen);
+  };
+
   hamburger.addEventListener("click", () => {
-    hamburger.classList.toggle("active");
-    navMenu.classList.toggle("active");
+    const nextState = !navMenu.classList.contains("active");
+    setMenuState(nextState);
   });
 
-  // Schließe das Menü wenn ein Link geklickt wird
   document.querySelectorAll(".nav-menu a").forEach((link) => {
     link.addEventListener("click", () => {
-      hamburger.classList.remove("active");
-      navMenu.classList.remove("active");
+      setMenuState(false);
     });
   });
+
+  const desktopQuery = window.matchMedia("(min-width: 601px)");
+  const handleViewportChange = (event) => {
+    if (event.matches) {
+      setMenuState(false);
+    }
+  };
+
+  if (desktopQuery.addEventListener) {
+    desktopQuery.addEventListener("change", handleViewportChange);
+  } else if (desktopQuery.addListener) {
+    desktopQuery.addListener(handleViewportChange);
+  }
 });
