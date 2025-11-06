@@ -288,46 +288,72 @@ h3 {
 }
 
 /* Button-Basis */
-.controls button,
-.contact-btn,
-.type-chip {
-  border: 1px solid #000000;
-  background: #757b8b;
-  color: var(--text);
-  padding: var(--space-xs) var(--space-sm);
-  border-radius: var(--radius-pill);
-  cursor: pointer;
-}
-
-.contact-btn {
-  border: 1px solid #26324a;
-  background: #9b9da3;
-  color: var(--text);
-  padding: var(--space-xs) var(--space-sm);
-  border-radius: var(--radius-pill);
-  cursor: pointer;
-}
-
-.controls button[aria-pressed="true"],
-.controls button.active {
-  background: var(--accent);
-  border-color: var(--accent);
-}
-
-.controls button:focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: 2px;
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-sm);
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(38, 50, 72, 0.15);
+  padding: var(--space-sm);
+  border-radius: var(--radius);
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
 }
 
 .controls .spacer {
   flex: 1;
 }
 
-.controls {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: var(--space-sm);
+.filter-btn {
+  flex: 1 1 140px;
+  border: 1px solid rgba(91, 154, 169, 0.5);
+  background: linear-gradient(135deg, rgba(91, 154, 169, 0.15), transparent);
+  color: #1f2933;
+  padding: 10px 16px;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease,
+    background 0.2s ease, transform 0.15s ease;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.3),
+    0 10px 20px rgba(91, 154, 169, 0.15);
+}
+
+.filter-btn:hover {
+  transform: translateY(-1px);
+  border-color: var(--accent);
+  background: linear-gradient(135deg, rgba(91, 154, 169, 0.2), rgba(91, 154, 169, 0.05));
+}
+
+.filter-btn[aria-pressed="true"],
+.filter-btn.active {
+  background: linear-gradient(135deg, var(--accent), #4f8f9f);
+  color: #fff;
+  border-color: transparent;
+  box-shadow: 0 14px 28px rgba(91, 154, 169, 0.35);
+}
+
+.filter-btn:focus-visible {
+  outline: 3px solid rgba(91, 154, 169, 0.5);
+  outline-offset: 3px;
+}
+
+@media (max-width: 560px) {
+  .filter-btn {
+    flex: 1 1 100%;
+  }
+}
+
+.contact-btn,
+.type-chip {
+  border: 1px solid #26324a;
+  background: #9b9da3;
+  color: var(--text);
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: var(--radius-pill);
+  cursor: pointer;
 }
 
 /* Timeline Hauptkomponente */
