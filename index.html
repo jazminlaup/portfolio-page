@@ -5,14 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Jasmin Lauper</title>
     <link rel="stylesheet" href="styles/styles.css" />
-    <link rel="stylesheet" href="styles/timeline.css" />
     <link rel="icon" type="image/x-icon" href="/assets/favicon.ico" />
+    <script src="scripts/nav.js" defer></script>
   </head>
   <body>
     <header>
       <nav>
-        <ul>
-          <li><a href="#Jasmin">Jasmin</a></li>
+        <a href="#Jasmin" class="brand">Jasmin</a>
+        <button class="hamburger" aria-label="Menü öffnen">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <ul class="nav-menu">
           <li><a href="#about">About me</a></li>
           <li><a href="#qualifikationen">Qualifikationen</a></li>
           <li><a href="#hobbies">Hobbies</a></li>
@@ -23,6 +28,7 @@
     <main>
       <section id="about">
         <h1>About me</h1>
+        <script type="module" src="scripts/main.js" defer></script>
         <div class="about-content">
           <img src="assets/Bild.jpg" alt="Profilbild" class="profilbild" />
           <p>
@@ -39,7 +45,7 @@
 
       <section id="qualifikationen">
         <script type="module" src="scripts/timeline.js" defer></script>
-        <h1>Mein Werdegang</h1>
+        <h1>Qualifikationen</h1>
         <p>Vielseitig. Fokusiert. Zukunftsorientiert.</p>
         <div class="controls" role="toolbar" aria-label="Filter">
           <button type="button" data-filter="Alle" aria-pressed="true">

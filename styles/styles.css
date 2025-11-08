@@ -1,56 +1,162 @@
-body {
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 120%;
-  line-height: 1.4;
-  background-color: #636c95;
-  margin: 40px;
+/* Grundlegende Variablen */
+:root {
+  /* Farben */
+  --bg: #f2f2f2;
+  --card: #111522;
+  --text: #000000;
+  --muted: #9aa3b2;
+  --accent: #4f8cff;
+  --line: #2a3244;
+  --success: #22c55e;
+  --edu: #f59e0b;
+  --cert: #06b6d4;
+
+  /* Layout */
+  --radius: 16px;
+  --radius-pill: 999px;
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 40px;
+
+  /* Typografie */
+  --font-family: Arial, Helvetica, sans-serif;
+  --font-size-base: 16px;
+  --font-size-lg: 120%;
+  --font-size-xl: 200%;
 }
 
-/* Navigation-Styling */
-nav {
+/* Grundlegende Styles */
+body {
+  font-family: var(--font-family);
+  font-size: var(--font-size-lg);
+  line-height: 1.4;
+  background-color: #636c95;
+  margin: var(--space-lg);
+}
+
+/* Header und Navigation */
+header {
+  width: 100%;
+  margin-bottom: var(--space-sm);
   background-color: lightgray;
   padding: 10px 20px;
+  box-sizing: border-box;
 }
-nav ul {
-  margin: 0;
+
+nav {
   display: flex;
-  list-style: none;
-  gap: 8px;
+  justify-content: space-between;
   align-items: center;
 }
+
+.brand {
+  font-size: 120%;
+  text-decoration: none;
+  color: black;
+}
+
+/* Navigation: horizontale Listung und responsive Verhalten */
+.hamburger {
+  display: none;
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 10px;
+  margin-left: auto;
+}
+
+.hamburger span {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background-color: black;
+  margin: 5px 0;
+  transition: all 0.3s ease;
+}
+
+nav ul {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  list-style: none;
+  gap: var(--space-sm);
+  align-items: center;
+}
+
 nav a {
   text-decoration: none;
   color: black;
-  padding: 10px;
+  padding: 8px 12px;
+  display: inline-block;
 }
 
 nav a.aktuell {
   background-color: gray;
   color: white;
+  border-radius: 8px;
 }
 
-/* Erstes Listenelement nach links */
+/* Erstes Listenelement nach links (z.B. Logo) */
 nav ul li:first-child {
   margin-right: auto;
 }
 
-/* Auf kleinen Bildschirmen wrap und bessere Anordnung */
+/* Auf kleinen Bildschirmen: Hamburger-Menü */
 @media (max-width: 600px) {
-  nav ul {
-    flex-wrap: wrap;
-    justify-content: center;
+  nav {
+    position: relative;
   }
-  nav ul li:first-child {
-    margin-right: 0;
-    order: -1;
+
+  .hamburger {
+    display: block;
+    z-index: 1000;
+    order: 3;
+  }
+
+  .nav-menu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 250px;
+    height: 100vh;
+    background-color: lightgray;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-top: 60px;
+    transition: 0.3s ease;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+  }
+
+  .nav-menu.active {
+    right: 0;
+  }
+
+  nav ul li {
     width: 100%;
     text-align: center;
   }
+
+  /* Hamburger Animation */
+  .hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+
+  .hamburger.active span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -6px);
+  }
 }
 
-h1, h2, h3 {
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 200%;
+/* Überschriften */
+h1,
+h2,
+h3 {
+  font-family: var(--font-family);
+  font-size: var(--font-size-xl);
   color: rgb(25, 0, 139);
   text-align: center;
 }
@@ -65,14 +171,213 @@ h1, h2, h3 {
 .about-content {
   display: flex;
   align-items: center;
-  gap: 40px; 
+  gap: var(--space-lg);
+}
+.badges,
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  align-items: center;
 }
 
-p {
-  font-family: Arial, Helvetica, sans-serif
-  font-size: 16px; 
+/* Button-Basis */
+.controls button,
+.badge,
+.type-chip {
+  border: 1px solid #26324a;
+  background: #757b8b;
+  color: var(--text);
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: var(--radius-pill);
+  cursor: pointer;
 }
 
+.controls button[aria-pressed="true"],
+.controls button.active {
+  background: var(--accent);
+  border-color: var(--accent);
+}
 
+.controls button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
 
+.controls .spacer {
+  flex: 1;
+}
 
+/* Timeline Hauptkomponente */
+.timeline {
+  position: relative;
+  list-style: none;
+  padding: 0;
+  margin: 24px 0 0;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 18px;
+  width: 2px;
+  background: var(--line);
+}
+
+.tl-item {
+  position: relative;
+  margin: 0 0 18px 0;
+  padding-left: 48px;
+}
+
+.tl-item .dot {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 3px rgba(79, 140, 255, 0.15);
+}
+
+.tl-card {
+  background: linear-gradient(
+    180deg,
+    rgba(82, 77, 145, 0.02),
+    rgba(82, 32, 46, 0)
+  );
+  border: 1px solid #242c40;
+  border-radius: var(--radius);
+  padding: 14px 16px;
+  backdrop-filter: blur(6px);
+  transition: transform 0.18s ease, border-color 0.2s ease;
+}
+
+.tl-card:focus-within,
+.tl-card:hover {
+  transform: translateY(-1px);
+  border-color: #324060;
+}
+
+/* Timeline Metadaten */
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 8px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.meta time {
+  font-variant-numeric: tabular-nums;
+}
+
+.title {
+  margin: 6px 0 2px;
+  font-size: 18px;
+}
+
+.org {
+  color: var(--text);
+  opacity: 0.9;
+}
+
+/* Badges und Highlights */
+.badges {
+  margin-top: var(--space-sm);
+}
+
+.badge {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.highlights {
+  margin: var(--space-sm) 0 0;
+  padding-left: 18px;
+}
+
+.highlights li {
+  margin: var(--space-xs) 0;
+}
+
+/* Typ-spezifische Styles */
+.type-chip {
+  font-size: 11px;
+  border-color: transparent;
+}
+
+.type-beruf {
+  background: rgba(34, 197, 94, 0.12);
+  border-color: rgba(34, 197, 94, 0.25);
+  color: #86efac;
+}
+
+.type-bildung {
+  background: rgba(247, 246, 245, 0.12);
+  border-color: rgba(245, 158, 11, 0.25);
+  color: #facc15;
+}
+
+.type-zertifikat {
+  background: rgba(6, 182, 212, 0.12);
+  border-color: rgba(6, 182, 212, 0.25);
+  color: #67e8f9;
+}
+
+/* Aktionen und weitere Elemente */
+.actions {
+  margin-top: 8px;
+}
+
+.actions a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.actions a:hover {
+  text-decoration: underline;
+}
+
+.more {
+  margin-top: 16px;
+  display: inline-block;
+  border: 1px solid #2a3450;
+  background: #10182b;
+  color: var(--text);
+  padding: 10px 14px;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+/* Animation (nur wenn Bewegung erwünscht) */
+@media (prefers-reduced-motion: no-preference) {
+  .tl-item {
+    opacity: 0;
+    transform: translateY(6px);
+    animation: in 0.35s ease forwards;
+  }
+  @keyframes in {
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+}
+
+/* Responsive Anpassungen für Timeline */
+@media (max-width: 560px) {
+  .timeline::before {
+    left: 12px;
+  }
+  .tl-item {
+    padding-left: 40px;
+  }
+  .tl-item .dot {
+    left: 4px;
+  }
+}
