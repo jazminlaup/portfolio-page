@@ -82,8 +82,8 @@ function render() {
       )}</time>
                 ${typeChip}
               </div>
-              <h3 class="title">${escapeHtml(x.titel)} ${
-        x.firma ? `· <span class="org">${escapeHtml(x.firma)}</span>` : ""
+              <h3 class="title">${escapeHtml(x.titel)}${
+        x.firma ? ` <span class="org">${escapeHtml(x.firma)}</span>` : ""
       }</h3>
               ${highlights ? `<ul class="highlights">${highlights}</ul>` : ""}
               ${link}
