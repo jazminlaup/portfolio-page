@@ -32,9 +32,9 @@ function byDateDesc(a, b) {
 
 // --- 3) Rendering ------------------------------------------------------------
 const state = { filter: "Alle", visible: 6 };
+const LOAD_STEP = 5;
 
 const tlEl = document.getElementById("timeline");
-const btnMore = document.getElementById("loadMore");
 
 function typeClass(typ) {
   const t = (typ || "").toLowerCase();
@@ -51,7 +51,7 @@ function render() {
 
   const visible = items.slice(0, state.visible);
 
-  tlEl.innerHTML = visible
+  const markup = visible
     .map((x, i) => {
       const highlights = (x.highlights || [])
         .map((h) => `<li>${escapeHtml(h)}</li>`)
@@ -92,7 +92,27 @@ function render() {
     })
     .join("");
 
-  btnMore.hidden = state.visible >= items.length;
+  const hasMore = state.visible < items.length;
+  const loadMoreEntry = hasMore ? renderLoadMore() : "";
+
+  tlEl.innerHTML = markup + loadMoreEntry;
+}
+
+function renderLoadMore() {
+  return `
+    <li class="tl-item load-more">
+      <span class="dot" aria-hidden="true"></span>
+      <article class="tl-card load-more-card">
+        <button
+          type="button"
+          class="load-more-btn"
+          data-load-more="true"
+          aria-label="Mehr Einträge anzeigen"
+        >
+          Mehr anzeigen
+        </button>
+      </article>
+    </li>`;
 }
 
 function escapeHtml(str) {
@@ -117,12 +137,16 @@ document.querySelectorAll(".controls button[data-filter]").forEach((btn) => {
   });
 });
 
-btnMore.addEventListener("click", () => {
-  state.visible += 5;
+tlEl.addEventListener("click", (event) => {
+  const btn = event.target.closest("[data-load-more]");
+  if (!btn) return;
+  const previousVisible = state.visible;
+  state.visible += LOAD_STEP;
   render();
   // Fokussiert den nächsten neu sichtbaren Eintrag für Tastaturnutzer*innen
+  const focusIndex = previousVisible + 1;
   const nextItem = tlEl.querySelector(
-    `.tl-item:nth-child(${state.visible}) .tl-card`
+    `.tl-item:nth-child(${focusIndex}) .tl-card`
   );
   if (nextItem) nextItem.focus();
 });
