@@ -380,6 +380,89 @@ h3 {
   cursor: pointer;
 }
 
+.contact-section {
+  background: linear-gradient(135deg, #eef4ff, #fff8f1);
+  border-radius: var(--radius);
+  padding: clamp(24px, 5vw, 48px);
+  border: 1px solid rgba(99, 102, 241, 0.15);
+  box-shadow: 0 25px 45px rgba(79, 70, 229, 0.15);
+}
+
+.contact-wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: clamp(20px, 4vw, 36px);
+  align-items: center;
+}
+
+.contact-eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.75rem;
+  margin: 0 0 12px;
+  color: #6b6da7;
+}
+
+.contact-copy {
+  margin: 0 0 20px;
+  color: #1f2a44;
+}
+
+.contact-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 28px;
+  border-radius: var(--radius-pill);
+  background: linear-gradient(120deg, #4338ca, #0ea5e9);
+  color: #fefefe;
+  text-decoration: none;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 18px 30px rgba(14, 165, 233, 0.25);
+}
+
+.contact-cta:hover,
+.contact-cta:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: 0 24px 36px rgba(67, 56, 202, 0.35);
+}
+
+.contact-hint {
+  font-size: 0.85rem;
+  color: #4c5668;
+  margin-top: 10px;
+}
+
+.contact-card {
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(67, 56, 202, 0.2);
+  border-radius: calc(var(--radius) * 0.75);
+  padding: 20px 24px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6),
+    0 15px 30px rgba(15, 23, 42, 0.08);
+}
+
+.contact-meta {
+  margin: 0;
+  display: grid;
+  gap: 16px;
+}
+
+.contact-meta dt {
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #6b6da7;
+}
+
+.contact-meta dd {
+  margin: 4px 0 0;
+  font-size: 1rem;
+  color: #111827;
+}
+
 /* Timeline Hauptkomponente */
 .timeline {
   position: relative;
