@@ -5,7 +5,10 @@ export const TIMELINE_DATA = [
     titel: "Business Analystin",
     firma: "Die Mobiliar, Bern",
     typ: "Beruf",
-    highlights: ["Fachverantworltiche Controllingwert", "blablablabla"],
+    highlights: [
+      "Verantwortung für aussagekräftige Controlling-Kennzahlen",
+      "Aufbau automatisierter Reporting- und Analyseprozesse",
+    ],
   },
   {
     start: "2023-03",
@@ -13,7 +16,10 @@ export const TIMELINE_DATA = [
     titel: "Schadensachbearbeiterin",
     firma: "Die Mobiliar, Generalagentur Belp",
     typ: "Beruf",
-    highlights: ["blablabla", "blablabla"],
+    highlights: [
+      "Bearbeitung komplexer Schadendossiers im Privatkundensegment",
+      "Koordination mit Expert:innen und Vertrieb für schnelle Lösungen",
+    ],
   },
   {
     start: "2020-09",
@@ -21,7 +27,10 @@ export const TIMELINE_DATA = [
     titel: "Senior schadenbearbeiterin Personenversicherung",
     firma: "Vaudoise, Bern",
     typ: "Beruf",
-    highlights: ["blablabla", "blablabla"],
+    highlights: [
+      "Führung anspruchsvoller Personenschadenfälle inklusive Verhandlung",
+      "Einführung von Best Practices zur Qualitäts- und Fristensicherung",
+    ],
   },
   {
     start: "2016-05",
@@ -29,7 +38,10 @@ export const TIMELINE_DATA = [
     titel: "Spezialsitin Schaden Personenversicherung",
     firma: "Die Mobiliar, Bern",
     typ: "Beruf",
-    highlights: ["blablabla", "blablabla"],
+    highlights: [
+      "Spezialabklärungen für Personenschaden und Leistungspflege",
+      "Ansprechperson für Agenturen bei fachlichen Eskalationen",
+    ],
   },
   {
     start: "2014-09",
@@ -37,7 +49,10 @@ export const TIMELINE_DATA = [
     titel: "Schadensachbearbeiterin",
     firma: "Die Mobiliar, Generalagentur Freiburg",
     typ: "Beruf",
-    highlights: ["blablabla", "blablabla"],
+    highlights: [
+      "Selbstständige Erstbearbeitung von Personen- und Sachschäden",
+      "Kundenberatung vor Ort und Schulung neuer Teammitglieder",
+    ],
   },
   {
     start: "2022-09",
@@ -46,8 +61,8 @@ export const TIMELINE_DATA = [
     firma: "laufendes Studium",
     typ: "Bildung",
     highlights: [
-      "Datenbanken, Software Engineering, BI",
-      "Teamprojekt: Claims Analytics PoC",
+      "Vertiefung in Datenbanken, Software Engineering und Business Intelligence",
+      "Fallstudie zur Digitalisierung der Schadenabwicklung",
     ],
   },
   {
@@ -56,7 +71,10 @@ export const TIMELINE_DATA = [
     titel: "Vericherungswirtchafterin HF",
     firma: "AKAD Bildung AG",
     typ: "Bildung",
-    highlights: ["Versicherungswirtschaft, blablabla ", "blablabla"],
+    highlights: [
+      "Vertiefung in Versicherungsökonomie, Recht und Vertrieb",
+      "Projektarbeit zu Prozessoptimierung in Schadenorganisationen",
+    ],
   },
   {
     start: "2016-04",
@@ -64,7 +82,10 @@ export const TIMELINE_DATA = [
     titel: "Fachausweis Privatversicherung",
     firma: "VBV Schweizerischer Versicherungsverband, Bern",
     typ: "Bildung",
-    highlights: ["Versicherungswirtschaft, blablabla ", "blablabla"],
+    highlights: [
+      "Intensive Vorbereitung auf Fachausweisprüfungen",
+      "Praxisnahe Fälle zu Underwriting und Leistungsprüfung",
+    ],
   },
   {
     start: "2011-08",
@@ -72,6 +93,9 @@ export const TIMELINE_DATA = [
     titel: "Versicherungskauffrau",
     firma: "Wirtschafts- und Kaderschule, Bern",
     typ: "Bildung",
-    highlights: ["blablabla, blablabla ", "blablabla"],
+    highlights: [
+      "Fundierte Grundbildung in Versicherung, Recht und Kundenberatung",
+      "Abschlussarbeit zu effizienten Schadenprozessen",
+    ],
   },
 ];
