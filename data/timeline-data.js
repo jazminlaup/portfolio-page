@@ -17,7 +17,7 @@ export const TIMELINE_DATA = [
     firma: "Die Mobiliar, Generalagentur Belp",
     typ: "Beruf",
     highlights: [
-      "Bearbeitung komplexer Schadendossiers im Privatkundensegment",
+      "Korrekte Beurteilung und Abwicklung von Schadenfällen aller Branchen",
       "Koordination mit Expert:innen und Vertrieb für schnelle Lösungen",
     ],
   },
@@ -28,8 +28,8 @@ export const TIMELINE_DATA = [
     firma: "Vaudoise, Bern",
     typ: "Beruf",
     highlights: [
-      "Führung anspruchsvoller Personenschadenfälle inklusive Verhandlung",
-      "Einführung von Best Practices zur Qualitäts- und Fristensicherung",
+      "erantwortlich für die korrekte Abwicklung von Kollektivkrankentaggeldfällen in deutscher und französischer Sprache",
+      "Mitarbeit in kleineren Projekten",
     ],
   },
   {
@@ -39,8 +39,7 @@ export const TIMELINE_DATA = [
     firma: "Die Mobiliar, Bern",
     typ: "Beruf",
     highlights: [
-      "Spezialabklärungen für Personenschaden und Leistungspflege",
-      "Ansprechperson für Agenturen bei fachlichen Eskalationen",
+      "Verantwortlich für die korrekte Abwicklung von Unfällen nach UVG und VVG sowie Kollektivkrankentaggeldfällen in deutscher und französicher Sprache",
     ],
   },
   {
@@ -50,8 +49,7 @@ export const TIMELINE_DATA = [
     firma: "Die Mobiliar, Generalagentur Freiburg",
     typ: "Beruf",
     highlights: [
-      "Selbstständige Erstbearbeitung von Personen- und Sachschäden",
-      "Kundenberatung vor Ort und Schulung neuer Teammitglieder",
+      "Korrekte Beurteilung und Abwicklung von Schadenfällen in denBranchen Sach und Haft hauptsächlich in französischer Sprache",
     ],
   },
   {
