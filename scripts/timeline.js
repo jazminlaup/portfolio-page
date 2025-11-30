@@ -63,17 +63,16 @@ function render() {
             x.link.label
           )}</a></div>`
         : "";
+      const categoryClass = typeClass(x.typ);
       const typeChip = x.typ
-        ? `<span class="type-chip ${typeClass(x.typ)}">${escapeHtml(
-            x.typ
-          )}</span>`
+        ? `<span class="type-chip ${categoryClass}">${escapeHtml(x.typ)}</span>`
         : "";
 
       return `
-          <li class="tl-item" data-type="${escapeHtml(
+          <li class="tl-item ${categoryClass}" data-type="${escapeHtml(
             x.typ || ""
           )}" style="animation-delay:${i * 50}ms">
-            <span class="dot" aria-hidden="true"></span>
+            <span class="dot ${categoryClass}" aria-hidden="true"></span>
             <article class="tl-card" tabindex="0">
               <div class="meta">
                 <time datetime="${x.start}">${periodLabel(
