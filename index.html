@@ -87,30 +87,49 @@
 
       <section id="hobbies" class="section-card hobbies-section">
         <h2 class="section-eyebrow">Freizeit</h2>
-        <p class="section-lede">Kurzbeschreibung der Hobbies.</p>
 
-        <iframe
-          data-testid="embed-iframe"
-          style="border-radius: 12px"
-          src="https://open.spotify.com/embed/playlist/37i9dQZF1DX76Wlfdnj7AP?utm_source=generator"
-          width="100%"
-          height="352"
-          frameborder="0"
-          allowfullscreen=""
-          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-          loading="lazy"
-        ></iframe>
+        <div class="hobby-subsections">
+          <article class="hobby-subsection hobby-subsection--music">
+            <header class="hobby-subsection__header">
+              <p class="hobby-subsection__eyebrow">Music</p>
+              <h3>Soundtrack für Fokus und Flow</h3>
+              <p>
+                Diese Playlist begleitet mich beim Studium, beim Arbeiten und
+                unterwegs. Sie sorgt für gute Vibes und hilft mir, konzentriert
+                zu bleiben.
+              </p>
+            </header>
+            <div class="hobby-subsection__body">
+              <iframe
+                data-testid="embed-iframe"
+                style="border-radius: 12px"
+                src="https://open.spotify.com/embed/playlist/37i9dQZF1DX76Wlfdnj7AP?utm_source=generator"
+                width="100%"
+                height="352"
+                frameborder="0"
+                allowfullscreen=""
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                loading="lazy"
+              ></iframe>
+            </div>
+          </article>
 
-        <ul>
-          <li>Lesen</li>
-          <li>
-            Reisen
+          <article class="hobby-subsection hobby-subsection--travel">
+            <header class="hobby-subsection__header">
+              <p class="hobby-subsection__eyebrow">Travel & Fotos</p>
+              <h3>Reiseerlebnisse im Überblick</h3>
+              <p>
+                Die interaktive Karte zeigt, welche Länder ich bereits besucht
+                habe oder gerne entdecken möchte. Darunter findest du ausgewählte
+                Foto-Impressionen aus diesen Reisen.
+              </p>
+            </header>
             <div class="travel-map-container" aria-live="polite">
               <div id="travel-map" class="travel-map" role="img"></div>
             </div>
             <div class="travel-gallery" aria-live="polite">
               <div class="travel-gallery__header">
-                <h3>Reiseimpressionen</h3>
+                <h4>Reiseimpressionen</h4>
                 <p>
                   Alle Fotos stammen aus besuchten Ländern. Klicke auf ein Land
                   in der Karte, um die zugehörigen Bilder hervorzuheben.
@@ -123,9 +142,8 @@
                 aria-label="Reisebilder"
               ></div>
             </div>
-          </li>
-          <li>Fotografie</li>
-        </ul>
+          </article>
+        </div>
       </section>
 
       <section id="contact" class="section-card contact-section">

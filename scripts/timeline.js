@@ -72,7 +72,7 @@ function render() {
           <li class="tl-item ${categoryClass}" data-type="${escapeHtml(
             x.typ || ""
           )}" style="animation-delay:${i * 50}ms">
-            <span class="dot ${categoryClass}" aria-hidden="true"></span>
+            <span class="dot" aria-hidden="true"></span>
             <article class="tl-card" tabindex="0">
               <div class="meta">
                 <time datetime="${x.start}">${periodLabel(
