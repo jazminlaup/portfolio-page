@@ -28,7 +28,7 @@ export const TIMELINE_DATA = [
     firma: "Vaudoise, Bern",
     typ: "Beruf",
     highlights: [
-      "erantwortlich für die korrekte Abwicklung von Kollektivkrankentaggeldfällen in deutscher und französischer Sprache",
+      "Verantwortlich für die korrekte Abwicklung von Kollektivkrankentaggeldfällen in deutscher und französischer Sprache",
       "Mitarbeit in kleineren Projekten",
     ],
   },
