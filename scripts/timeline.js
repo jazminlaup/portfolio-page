@@ -44,57 +44,73 @@ function typeClass(typ) {
   return "";
 }
 
-function render() {
-  const items = TIMELINE_DATA.slice()
+function timelineItemMarkup(item, index) {
+  const highlights = (item.highlights || [])
+    .map((h) => `<li>${escapeHtml(h)}</li>`)
+    .join("");
+  const link = item.link
+    ? `<div class="actions"><a href="${
+        item.link.url
+      }" target="_blank" rel="noopener">${escapeHtml(item.link.label)}</a></div>`
+    : "";
+  const categoryClass = typeClass(item.typ);
+  const typeChip = item.typ
+    ? `<span class="type-chip ${categoryClass}">${escapeHtml(item.typ)}</span>`
+    : "";
+
+  return `
+      <li class="tl-item ${categoryClass}" data-type="${escapeHtml(
+        item.typ || ""
+      )}" style="animation-delay:${index * 50}ms">
+        <span class="dot" aria-hidden="true"></span>
+        <article class="tl-card" tabindex="0">
+          <div class="meta">
+            <time datetime="${item.start}">${periodLabel(
+    item.start,
+    item.end
+  )}</time>
+            ${typeChip}
+          </div>
+          <h3 class="title">${escapeHtml(item.titel)}${
+    item.firma ? ` <span class="org">${escapeHtml(item.firma)}</span>` : ""
+  }</h3>
+          ${highlights ? `<ul class="highlights">${highlights}</ul>` : ""}
+          ${link}
+        </article>
+      </li>`;
+}
+
+function sortedFilteredItems() {
+  return TIMELINE_DATA.slice()
     .sort(byDateDesc)
     .filter((x) => (state.filter === "Alle" ? true : x.typ === state.filter));
+}
 
+function render({ appendFromIndex = 0 } = {}) {
+  const items = sortedFilteredItems();
   const visible = items.slice(0, state.visible);
-
-  const markup = visible
-    .map((x, i) => {
-      const highlights = (x.highlights || [])
-        .map((h) => `<li>${escapeHtml(h)}</li>`)
-        .join("");
-      const link = x.link
-        ? `<div class="actions"><a href="${
-            x.link.url
-          }" target="_blank" rel="noopener">${escapeHtml(
-            x.link.label
-          )}</a></div>`
-        : "";
-      const categoryClass = typeClass(x.typ);
-      const typeChip = x.typ
-        ? `<span class="type-chip ${categoryClass}">${escapeHtml(x.typ)}</span>`
-        : "";
-
-      return `
-          <li class="tl-item ${categoryClass}" data-type="${escapeHtml(
-            x.typ || ""
-          )}" style="animation-delay:${i * 50}ms">
-            <span class="dot" aria-hidden="true"></span>
-            <article class="tl-card" tabindex="0">
-              <div class="meta">
-                <time datetime="${x.start}">${periodLabel(
-        x.start,
-        x.end
-      )}</time>
-                ${typeChip}
-              </div>
-              <h3 class="title">${escapeHtml(x.titel)}${
-        x.firma ? ` <span class="org">${escapeHtml(x.firma)}</span>` : ""
-      }</h3>
-              ${highlights ? `<ul class="highlights">${highlights}</ul>` : ""}
-              ${link}
-            </article>
-          </li>`;
-    })
-    .join("");
-
   const hasMore = state.visible < items.length;
-  const loadMoreEntry = hasMore ? renderLoadMore() : "";
 
-  tlEl.innerHTML = markup + loadMoreEntry;
+  if (appendFromIndex <= 0) {
+    const markup =
+      visible.map((item, index) => timelineItemMarkup(item, index)).join("") +
+      (hasMore ? renderLoadMore() : "");
+    tlEl.innerHTML = markup;
+    return;
+  }
+
+  const loadMoreNode = tlEl.querySelector(".tl-item.load-more");
+  if (loadMoreNode) loadMoreNode.remove();
+
+  const newItems = visible.slice(appendFromIndex);
+  const newMarkup = newItems
+    .map((item, i) => timelineItemMarkup(item, appendFromIndex + i))
+    .join("");
+  tlEl.insertAdjacentHTML("beforeend", newMarkup);
+
+  if (hasMore) {
+    tlEl.insertAdjacentHTML("beforeend", renderLoadMore());
+  }
 }
 
 function renderLoadMore() {
@@ -141,7 +157,7 @@ tlEl.addEventListener("click", (event) => {
   if (!btn) return;
   const previousVisible = state.visible;
   state.visible += LOAD_STEP;
-  render();
+  render({ appendFromIndex: previousVisible });
   // Fokussiert den nächsten neu sichtbaren Eintrag für Tastaturnutzer*innen
   const focusIndex = previousVisible + 1;
   const nextItem = tlEl.querySelector(
