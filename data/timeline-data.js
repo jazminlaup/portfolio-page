@@ -24,7 +24,7 @@ export const TIMELINE_DATA = [
   {
     start: "2020-09",
     end: "2023-02",
-    titel: "Senior schadenbearbeiterin Personenversicherung",
+    titel: "Senior Schadenbearbeiterin Personenversicherung",
     firma: "Vaudoise, Bern",
     typ: "Beruf",
     highlights: [

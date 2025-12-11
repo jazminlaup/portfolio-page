@@ -248,20 +248,24 @@ h3 {
   flex: 0 1 320px;
 }
 
+
 .about-content {
   display: flex;
   align-items: center;
-  gap: var(--space-lg);
+  gap: clamp(24px, 6vw, 120px);
   flex-wrap: wrap;
   justify-content: center;
-  text-align: left;
 }
 
 .intro-text {
-  flex: 1 1 300px;
+  flex: 1 1 420px;
+  min-width: min(100%, 420px);
   display: flex;
   align-items: center;
-  min-height: 0;
+  justify-content: center;
+  text-align: center;
+  padding: clamp(var(--space-sm), 2vw, var(--space-lg));
+  min-height: 220px;
 }
 
 #intro {
@@ -295,8 +299,6 @@ h3 {
     max-width: 100%;
   }
   .intro-text {
-    justify-content: center;
-    text-align: center;
     padding: var(--space-sm) 0;
   }
 
