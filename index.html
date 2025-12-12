@@ -157,7 +157,7 @@
             </p>
             <a
               class="contact-cta"
-              href="mailto:jasmin.zurbruegg@students.bfh.ch?subject=Anfrage%20%E2%80%93%20Portfolio&body=Hallo%20Jasmin%2C%0A%0Aich%20habe%20deine%20Portfolioseite%20besucht%20und%20m%C3%B6chte%20gern%20mit%20dir%20in%20Kontakt%20treten%3A%0A%0A"
+              href="mailto:jasmin.lauper@students.bfh.ch?subject=Anfrage%20%E2%80%93%20Portfolio&body=Hallo%20Jasmin%2C%0A%0Aich%20habe%20deine%20Portfolioseite%20besucht%20und%20m%C3%B6chte%20gern%20mit%20dir%20in%20Kontakt%20treten%3A%0A%0A"
             >E-Mail öffnen</a>
             <p class="contact-hint">
               Öffnet dein Standard-Mailprogramm mit Betreff und Begrüssung.
@@ -171,7 +171,7 @@
               </div>
               <div>
                 <dt>E‑Mail</dt>
-                <dd>jasmin.zurbruegg@students.bfh.ch</dd>
+                <dd>jasmin.lauper@students.bfh.ch</dd>
               </div>
             </dl>
           </div>
@@ -179,8 +179,58 @@
       </section>
     </main>
 
+    <footer class="site-footer" aria-label="Sektion Fussbereich">
+      <div class="footer-inner">
+        <div class="footer-branding">
+          <p class="footer-name">Jasmin Lauper</p>
+          <p class="footer-title">
+            Business Analystin &amp; Wirtschaftsinformatik-Studentin
+          </p>
+        </div>
+        <div class="footer-contact">
+          <h3>Kontaktpunkt</h3>
+          <address>
+            BFH Wirtschaft<br />
+            Brückenstrasse 73<br />
+            3005 Bern<br />
+            Schweiz
+          </address>
+          <a class="footer-mail" href="mailto:jasmin.lauper@students.bfh.ch"
+            >jasmin.lauper@students.bfh.ch</a
+          >
+        </div>
+        <div class="footer-links" aria-label="Schnellzugriff">
+          <h3>Direktlinks</h3>
+          <ul>
+            <li><a href="#about">Portrait</a></li>
+            <li><a href="#qualifikationen">Expertise</a></li>
+            <li><a href="#hobbies">Freizeit</a></li>
+            <li><a href="#contact">Kontakt</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-meta">
+        <p>
+          ©
+          <span id="footer-year"></span>
+          Jasmin Lauper. Portfolio erstellt für das Studium an der Berner
+          Fachhochschule.
+        </p>
+        <p>
+          Letzte Aktualisierung:
+          <time datetime="2025-12-01">Dezember 2025</time>
+        </p>
+      </div>
+    </footer>
+
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <script src="scripts/map_configuration.js"></script>
     <script src="scripts/render_map.js"></script>
+    <script>
+      const footerYearEl = document.getElementById("footer-year");
+      if (footerYearEl) {
+        footerYearEl.textContent = new Date().getFullYear();
+      }
+    </script>
   </body>
 </html>
