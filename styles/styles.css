@@ -292,12 +292,6 @@ nav a {
   display: inline-block;
 }
 
-nav a.aktuell {
-  background-color: gray;
-  color: white;
-  border-radius: 8px;
-}
-
 /* Erstes Listenelement nach links (z.B. Logo) */
 /* Auf kleinen Bildschirmen: Hamburger-Menü */
 @media (max-width: 600px) {
