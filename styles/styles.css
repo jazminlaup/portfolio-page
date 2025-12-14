@@ -245,6 +245,8 @@ nav {
   align-items: center;
   gap: var(--space-sm);
   flex-wrap: wrap;
+  position: relative;
+  z-index: 1;
 }
 
 .brand {
@@ -305,7 +307,7 @@ nav a.aktuell {
 
   .hamburger {
     display: block;
-    z-index: 1000;
+    z-index: 2200;
     order: 3;
   }
 
@@ -322,6 +324,7 @@ nav a.aktuell {
     transition: transform 0.3s ease;
     box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
     transform: translateX(100%);
+    z-index: 2100;
   }
   .nav-menu.active {
     transform: translateX(0);
@@ -380,9 +383,23 @@ h3 {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
   text-align: center;
   padding: clamp(var(--space-sm), 2vw, var(--space-lg));
   min-height: 220px;
+}
+
+.intro-typed {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
+.intro-name {
+  font-size: clamp(1.5rem, 4.5vw, 2.25rem);
+  font-weight: 700;
+  margin-bottom: clamp(0.5rem, 2vw, 0.75rem);
 }
 
 #intro {
