@@ -219,12 +219,10 @@ section {
   font-size: clamp(1rem, 2.5vw, 1.2rem);
   color: #1f2a44;
   margin: 0 0 var(--space-sm);
-  max-width: 60ch;
 }
 .section-copy {
   color: #2b3448;
   margin: 0 0 var(--space-md);
-  max-width: 70ch;
   line-height: 1.6;
 }
 .about-section {
@@ -1082,7 +1080,6 @@ h3 {
 
 .travel-gallery__header p {
   margin: 8px 0 0;
-  max-width: 560px;
   font-size: 0.95rem;
   color: #4b5563;
 }
